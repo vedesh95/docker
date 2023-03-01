@@ -18,13 +18,26 @@ docker exec -it <container-id> sh //full terminal access inside the context of t
 
 docker run -it busybox sh
 
+#rebuilds with cache
 
-Dockerfile
-FROM alpine
-# Step 2: Download and install dependency
-RUN apk add --update redis
-# Step 3: Tell the image what to do when it starts as container
-CMD ["redis-server"]
+#tagging an image
+<your-docker-id>/<repo/project name>:<version>
+nuhuris/redis:1
+docker run nuhuris/redis:1
 
-docker build .
-docker run <container-id>
+docker run -p 8080:8080  nuhuris/simpleweb
+docker run -p 5000:8080  nuhuris/simpleweb
+localhost:5000
+docker run -it nuhuris/simpleweb sh
+ls
+
+docker build -t nuhuris/simpleweb:latest .
+docker run nuhuris/simpleweb
+
+docker run redis
+
+docker-compose up
+docker-compose up --build
+
+docker-compose up -d
+docker-compose down
